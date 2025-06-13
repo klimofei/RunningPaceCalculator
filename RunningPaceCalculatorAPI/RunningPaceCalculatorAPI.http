@@ -1,0 +1,6 @@
+@RunningPaceCalculatorAPI_HostAddress = http://localhost:5220
+
+GET {{RunningPaceCalculatorAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
