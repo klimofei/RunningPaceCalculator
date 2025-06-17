@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Model;
 
 namespace RunningPaceCalculatorAPI.Controllers
 {
@@ -18,7 +19,7 @@ namespace RunningPaceCalculatorAPI.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
+        [HttpGet("forecast", Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
@@ -28,6 +29,20 @@ namespace RunningPaceCalculatorAPI.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet("pace", Name = "GetPace")]
+        public IEnumerable<TimeSpan> GetPace()
+        {
+            return new List<TimeSpan> { 
+                new Pace(new TimeSpan(0, 5, 0), 1, MeasurmentSystem.Metric).ReturnPace(),
+                new Pace(new TimeSpan(0, 9, 45), 1, MeasurmentSystem.Impereial).ReturnPace(),
+                new Pace(new TimeSpan(0, 22, 34), 5, MeasurmentSystem.Metric).ReturnPace(),
+                new Pace(new TimeSpan(1, 20, 12), 10, MeasurmentSystem.Impereial).ReturnPace(),
+                new Pace(new TimeSpan(3, 49, 7), 42.2, MeasurmentSystem.Metric).ReturnPace()
+            };
+
+            // new Pace(new TimeSpan(0, 5, 0), 1000, MeasurmentSystem.Metric);
         }
     }
 }

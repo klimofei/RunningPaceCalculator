@@ -10,6 +10,7 @@ namespace Model
     {
         private Pace _pace;
         private double _distanceInMeters;
+  
 
         public RaceResultPrediction(Pace pace, double distanceIn_distanceInMetersMeters) 
         { 
@@ -24,11 +25,8 @@ namespace Model
             return result;
         }
 
-        private int ConvertPaceToSeconds (Pace pace)
-        {
-            int result = 0;
-            result = pace.Minutes * 60 + pace.Seconds;
-            return result;
-        }
+       
+
+
     }
 }

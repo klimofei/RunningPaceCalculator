@@ -8,8 +8,57 @@ namespace Model
 {
     public class Pace
     {
-        public int Minutes { get; set; }
-        public int Seconds { get; set; }
-        MeasurmentSystem MeasurmentSystem { get; set; }
+        public TimeSpan Time {  get; set; }
+        public double DistanceInUnits { get; set; }
+        public MeasurmentSystem MeasurmentSystem { get; set; }
+        public const double metersInKm = 1000;
+        public const double metersInMi = 1609.344;
+
+        public Pace(TimeSpan time, double distanceInUnits, MeasurmentSystem measurmentSystem)
+        {
+            Time = time;
+            DistanceInUnits = distanceInUnits;
+            MeasurmentSystem = measurmentSystem;
+        }
+
+        public TimeSpan ReturnPace ()
+        {
+            TimeSpan result = new TimeSpan();
+            double timeInSeconds = Time.TotalSeconds;
+            //double metersInSecond =  DistanceInUnits / timeInSeconds;
+            double metersInSecond = 0;
+
+            switch(MeasurmentSystem)
+            {
+                case MeasurmentSystem.Metric:
+                    metersInSecond = DistanceInUnits * metersInKm / timeInSeconds;
+                    break;
+                case MeasurmentSystem.Impereial:
+                    metersInSecond = DistanceInUnits * metersInMi / timeInSeconds;
+                    break;
+            }
+
+
+            if (MeasurmentSystem == MeasurmentSystem.Metric)
+            {
+                var paceInSeconds = metersInKm / metersInSecond; // <- seconds per 1 km
+                result = new TimeSpan(0, 0, Convert.ToInt32(paceInSeconds));
+            }
+            else if ( MeasurmentSystem == MeasurmentSystem.Impereial)
+            {
+                var paceInSeconds = metersInMi / metersInSecond; // <- seconds per 1 mi
+                result = new TimeSpan(0, 0, Convert.ToInt32(paceInSeconds));
+            }
+
+            return result;
+
+        }
+
+        private int ConvertPaceToSeconds()
+        {
+            int result = 0;
+            result = Time.Hours * 60 * 60 + Time.Minutes * 60 + Time.Seconds;
+            return result;
+        }
     }
 }
