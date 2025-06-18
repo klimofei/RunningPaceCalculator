@@ -34,15 +34,19 @@ namespace RunningPaceCalculatorAPI.Controllers
         [HttpGet("pace", Name = "GetPace")]
         public IEnumerable<TimeSpan> GetPace()
         {
-            return new List<TimeSpan> { 
-                new Pace(new TimeSpan(0, 5, 0), 1, MeasurmentSystem.Metric).ReturnPace(),
-                new Pace(new TimeSpan(0, 9, 45), 1, MeasurmentSystem.Impereial).ReturnPace(),
-                new Pace(new TimeSpan(0, 22, 34), 5, MeasurmentSystem.Metric).ReturnPace(),
-                new Pace(new TimeSpan(1, 20, 12), 10, MeasurmentSystem.Impereial).ReturnPace(),
-                new Pace(new TimeSpan(3, 49, 7), 42.2, MeasurmentSystem.Metric).ReturnPace()
-            };
+            //return new List<TimeSpan> { 
+            //    new Pace(new TimeSpan(0, 5, 0), 1, MeasurmentSystem.Metric).ReturnPace(),
+            //    new Pace(new TimeSpan(0, 9, 45), 1, MeasurmentSystem.Impereial).ReturnPace(),
+            //    new Pace(new TimeSpan(0, 22, 34), 5, MeasurmentSystem.Metric).ReturnPace(),
+            //    new Pace(new TimeSpan(1, 20, 12), 10, MeasurmentSystem.Impereial).ReturnPace(),
+            //    new Pace(new TimeSpan(3, 49, 7), 42.2, MeasurmentSystem.Metric).ReturnPace(),
+            //    new Pace(new TimeSpan(3, 50, 0), 50.0, MeasurmentSystem.Metric).ReturnPace()
+            //};
 
-            // new Pace(new TimeSpan(0, 5, 0), 1000, MeasurmentSystem.Metric);
+            return new List<TimeSpan> {
+                new RaceResultPrediction (new Pace(new TimeSpan(0, 5, 0), 1, MeasurmentSystem.Metric)).FiveKmResult,
+                new RaceResultPrediction (new Pace(new TimeSpan(0, 9, 0), 1, MeasurmentSystem.Impereial)).FiveMiResult,
+            };
         }
     }
 }

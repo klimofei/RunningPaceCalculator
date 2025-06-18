@@ -8,12 +8,13 @@ namespace Model
 {
     public class Pace
     {
-        public TimeSpan Time {  get; set; }
-        public double DistanceInUnits { get; set; }
-        public MeasurmentSystem MeasurmentSystem { get; set; }
         public const double metersInKm = 1000;
         public const double metersInMi = 1609.344;
 
+        public TimeSpan Time {  get; set; }
+        public double DistanceInUnits { get; set; } // km for metric, mi for impereal
+        public MeasurmentSystem MeasurmentSystem { get; set; }
+        
         public Pace(TimeSpan time, double distanceInUnits, MeasurmentSystem measurmentSystem)
         {
             Time = time;
@@ -24,20 +25,7 @@ namespace Model
         public TimeSpan ReturnPace ()
         {
             TimeSpan result = new TimeSpan();
-            double timeInSeconds = Time.TotalSeconds;
-            //double metersInSecond =  DistanceInUnits / timeInSeconds;
-            double metersInSecond = 0;
-
-            switch(MeasurmentSystem)
-            {
-                case MeasurmentSystem.Metric:
-                    metersInSecond = DistanceInUnits * metersInKm / timeInSeconds;
-                    break;
-                case MeasurmentSystem.Impereial:
-                    metersInSecond = DistanceInUnits * metersInMi / timeInSeconds;
-                    break;
-            }
-
+            double metersInSecond = GetMetersInSecond();
 
             if (MeasurmentSystem == MeasurmentSystem.Metric)
             {
@@ -54,11 +42,29 @@ namespace Model
 
         }
 
-        private int ConvertPaceToSeconds()
+        public double GetMetersInSecond ()
+        {
+            double timeInSeconds = Time.TotalSeconds;
+            double metersInSecond = 0;
+
+            switch (MeasurmentSystem)
+            {
+                case MeasurmentSystem.Metric:
+                    metersInSecond = DistanceInUnits * metersInKm / timeInSeconds;
+                    break;
+                case MeasurmentSystem.Impereial:
+                    metersInSecond = DistanceInUnits * metersInMi / timeInSeconds;
+                    break;
+            }
+            return metersInSecond;
+        }
+
+        public int ConvertPaceToSeconds()
         {
             int result = 0;
             result = Time.Hours * 60 * 60 + Time.Minutes * 60 + Time.Seconds;
             return result;
         }
+
     }
 }
