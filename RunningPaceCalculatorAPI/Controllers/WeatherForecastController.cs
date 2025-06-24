@@ -46,6 +46,16 @@ namespace RunningPaceCalculatorAPI.Controllers
             return new List<TimeSpan> {
                 new RaceResultPrediction (new Pace(new TimeSpan(0, 5, 0), 1, MeasurmentSystem.Metric)).FiveKmResult,
                 new RaceResultPrediction (new Pace(new TimeSpan(0, 9, 0), 1, MeasurmentSystem.Impereial)).FiveMiResult,
+                new RaceResultPrediction (new Pace(new TimeSpan(0, 4, 25), 1, MeasurmentSystem.Metric)).OneKmResult,
+                new RaceResultPrediction (new Pace(new TimeSpan(0, 4, 25), 1, MeasurmentSystem.Impereial)).OneMiResult,
+                new RaceResultPrediction (new Pace(new TimeSpan(0, 4, 10), 1, MeasurmentSystem.Metric)).TenKmResult,
+                new RaceResultPrediction (new Pace(new TimeSpan(0, 6, 10), 1, MeasurmentSystem.Metric)).TenMiResult,
+                new RaceResultPrediction (new Pace(new TimeSpan(0, 4, 10), 1, MeasurmentSystem.Metric)).HalfMarathonResult,
+                new RaceResultPrediction (new Pace(new TimeSpan(0, 6, 10), 1, MeasurmentSystem.Metric)).HalfMarathonResult,
+                new RaceResultPrediction (new Pace(new TimeSpan(0, 4, 10), 1, MeasurmentSystem.Metric)).MarathonResult,
+                new RaceResultPrediction (new Pace(new TimeSpan(0, 30, 0), 5, MeasurmentSystem.Metric)).MarathonResult,
+                new RaceResultPrediction (new Pace(new TimeSpan(0, 80, 0), 16.1, MeasurmentSystem.Metric)).MarathonResult,
+                new RaceResultPrediction (new Pace(new TimeSpan(0, 9, 0), 1, MeasurmentSystem.Impereial)).FiveMiResult,
             };
         }
     }

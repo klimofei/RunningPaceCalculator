@@ -18,7 +18,7 @@ namespace Model
         public Pace(TimeSpan time, double distanceInUnits, MeasurmentSystem measurmentSystem)
         {
             Time = time;
-            DistanceInUnits = distanceInUnits;
+            DistanceInUnits = distanceInUnits; // <- km or mi
             MeasurmentSystem = measurmentSystem;
         }
 
