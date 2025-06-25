@@ -9,6 +9,7 @@ namespace Model
     public enum MeasurmentSystem
     {
         Metric,
-        Impereial
+        Impereial,
+        Track
     }
 }

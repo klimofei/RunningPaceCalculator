@@ -18,7 +18,7 @@ namespace Model
         public Pace(TimeSpan time, double distanceInUnits, MeasurmentSystem measurmentSystem)
         {
             Time = time;
-            DistanceInUnits = distanceInUnits; // <- km or mi
+            DistanceInUnits = distanceInUnits; // <- km, mi, or meters for the track
             MeasurmentSystem = measurmentSystem;
         }
 
@@ -54,6 +54,9 @@ namespace Model
                     break;
                 case MeasurmentSystem.Impereial:
                     metersInSecond = DistanceInUnits * metersInMi / timeInSeconds;
+                    break;
+                case MeasurmentSystem.Track:
+                    metersInSecond = DistanceInUnits / timeInSeconds;
                     break;
             }
             return metersInSecond;

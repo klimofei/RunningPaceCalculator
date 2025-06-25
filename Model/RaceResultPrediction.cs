@@ -55,13 +55,22 @@ namespace Model
 
             if (MeasurmentSysForCustomDistance == MeasurmentSystem.Metric)
             {
-                CustomDistanceResult = new TimeSpan(0, 0, Convert.ToInt32(CustomDistacneInUnits * OneMiDistance / _pace.GetMetersInSecond()));
+                CustomDistanceResult = new TimeSpan(0, 0, Convert.ToInt32(CustomDistacneInUnits * OneKmDistance / _pace.GetMetersInSecond()));
             }
             else if (MeasurmentSysForCustomDistance == MeasurmentSystem.Impereial)
             {
                 CustomDistanceResult = new TimeSpan(0, 0, Convert.ToInt32(CustomDistacneInUnits * OneMiDistance / _pace.GetMetersInSecond()));
             }
+            else if (MeasurmentSysForCustomDistance == MeasurmentSystem.Track)
+            {
+                CustomDistanceResult = new TimeSpan(0, 0, Convert.ToInt32(CustomDistacneInUnits  / _pace.GetMetersInSecond()));
+            }
+        }
 
-        }      
+        public TimeSpan GetResultForTrackLaps(int numberOfLaps)
+        {
+            return new TimeSpan(0, 0, Convert.ToInt32( (CustomDistacneInUnits * numberOfLaps) / _pace.GetMetersInSecond()));
+        }
+
      }
 }

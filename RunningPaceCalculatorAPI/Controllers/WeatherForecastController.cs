@@ -56,6 +56,7 @@ namespace RunningPaceCalculatorAPI.Controllers
                 new RaceResultPrediction (new Pace(new TimeSpan(0, 30, 0), 5, MeasurmentSystem.Metric)).MarathonResult,
                 new RaceResultPrediction (new Pace(new TimeSpan(0, 80, 0), 16.1, MeasurmentSystem.Metric)).MarathonResult,
                 new RaceResultPrediction (new Pace(new TimeSpan(0, 9, 0), 1, MeasurmentSystem.Impereial)).FiveMiResult,
+                new RaceResultPrediction (new Pace(new TimeSpan(0, 1, 40), 400, MeasurmentSystem.Track)).GetResultForTrackLaps(3)
             };
         }
     }
