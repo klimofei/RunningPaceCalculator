@@ -30,7 +30,7 @@ namespace Model
         public TimeSpan MarathonResult { get; set; }
        
 
-        public double CustomDistacneInUnits;
+        public double CustomDistacneInUnits { get; set; }
         public MeasurmentSystem MeasurmentSysForCustomDistance { get; set;  }
         public TimeSpan CustomDistanceResult { get; set; }
 
